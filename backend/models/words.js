@@ -6,15 +6,23 @@ const WordSchema = new Schema({
         type: String,
         required: true
     },
-    meaning: {
-        type: String,
-        required: true
+    rows: {
+        type: Number,
+        required: true,
+        default: 6
     },
-    user: {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
-    }
+    hints: [{
+        hint: { type: String },
+        hintType: {
+            type: String,
+            enum: ["Meaning", "Synonym", "Antonym"]
+        }
+    }]
+    // user: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'User',
+    //     required: true
+    // }
 });
 
 const Word = mongoose.model('Word', WordSchema);

@@ -20,9 +20,22 @@ const UserSchema = new Schema({
     words: [
         {
             type: Schema.Types.ObjectId,
-            ref: 'Word'
+            ref: 'Word',
+            attempts: {
+                type: Number,
+                default: 0
+            },
+            rowsUsed: Number
         }
-    ]
+    ],
+    streak: [{
+        date: Date,
+        completed: Number,
+        hintsUsed: {
+            type: Number,
+            default: 0
+        }
+    }]
 })
 
 const User = mongoose.model('User', UserSchema)
