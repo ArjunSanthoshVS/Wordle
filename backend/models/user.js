@@ -19,13 +19,16 @@ const UserSchema = new Schema({
     },
     words: [
         {
-            type: Schema.Types.ObjectId,
-            ref: 'Word',
+            wordId: {
+                type: Schema.Types.ObjectId,
+                ref: 'Word',
+            },
             attempts: {
                 type: Number,
                 default: 0
             },
-            rowsUsed: Number
+            rowsUsed: Number,
+            completed: Date
         }
     ],
     streak: [{
